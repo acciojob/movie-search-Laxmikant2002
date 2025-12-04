@@ -53,22 +53,24 @@ const App = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyPress={handleKeyPress}
+              data-testid="search-input"
             />
-            <button onClick={searchMovies}>Search</button>
+            <button onClick={searchMovies} data-testid="search-button">Search</button>
           </div>
         </div>
 
-        {error && <div className="error">{error}</div>}
+        {error && <div className="error" data-testid="error">{error}</div>}
 
         <div className="movies-container">
           {movies.map((movie) => (
-            <div key={movie.imdbID} className="movie-card">
+            <div key={movie.imdbID} className="movie-card" data-testid="movie-card">
               <img
                 src={movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/300x450?text=No+Poster"}
                 alt={movie.Title}
+                data-testid="movie-poster"
               />
-              <h3>{movie.Title}</h3>
-              <p>{movie.Year}</p>
+              <h3 data-testid="movie-title">{movie.Title}</h3>
+              <p data-testid="movie-year">{movie.Year}</p>
             </div>
           ))}
         </div>
